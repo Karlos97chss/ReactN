@@ -1,4 +1,15 @@
-import { getTasks } from "./tasks";
-import { addTask } from "./tasks";
-import { removeTask } from "./tasks";
-import { updateTask } from "./tasks";
+import { getTasks, addTask, removeTask, updateTask } from "./tasks.js";
+
+getTasks().forEach((task) => {
+    const {id, name, completed} = task
+    console.log(id, name, completed)
+})
+
+addTask("Estudar React Native")
+removeTask(1)
+updateTask(2,{name:"Estudar JavaScript", completed: true})
+
+getTasks().forEach((task) => {
+    const {id, name, completed} = task
+    console.log(id, name, completed)
+})

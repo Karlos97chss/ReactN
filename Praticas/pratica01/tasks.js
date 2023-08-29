@@ -1,33 +1,23 @@
-const tasks = [];
+const tasks = [
+    {id:1, name: "Estudar java script", completed: false},
+    {id:2, name: "Estudar React", completed: false}
+];
 
-function getTasks(){
-    return tasks;
-}
+const getTasks = () => tasks
 
-
-function addTask(taskName){
-    const newTask ={
-        id:taskId,
-        name: taskName,
-        completed: false,
-    };
+const addTask = (taskName) => {
+    const newTask  = {id:tasks.length+1, name: taskName, completed: false}
     tasks.push(newTask);
-}
-
-function removeTask(taskId){
-    tasks = tasks.filter(task => task.id !== taskId)
-}
-
-function updateTask(taskId, updateTask){
-    const taskIndex = tasks.findIndex(task => task.id === taskId);
-    if (taskIndex !== -1){
-        tasks[taskIndex] = {...tasks[taskIndex], ...updateTask};
-    }
-}
-
-module.exports = {
-    getTasks,
-    addTask,
-    removeTask,
-    updateTask,
 };
+
+const removeTask = (taskId) => {
+    const index = tasks.findIndex((task)=> task.id ===  taskId)
+    tasks.splice(index,1)
+};
+
+const updateTask = (taskId, taskProps) => {
+    const index = tasks.findIndex((task)=> task.id === taskId)
+    tasks[index]= {id: taskId, ...taskProps, }
+};
+
+export {getTasks, addTask, removeTask, updateTask}
