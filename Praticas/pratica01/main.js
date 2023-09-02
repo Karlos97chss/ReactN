@@ -1,15 +1,37 @@
-import { getTasks, addTask, removeTask, updateTask } from "./tasks.js";
+import { View, StyleSheet } from 'react-native';
+import Box from './components/Box';
 
-getTasks().forEach((task) => {
-    const {id, name, completed} = task
-    console.log(id, name, completed)
-})
+//componente principal do app
+const App = () => (
+<View style={styles.container}>
 
-addTask("Estudar React Native")
-removeTask(1)
-updateTask(2,{name:"Estudar JavaScript", completed: true})
+<Box color="red" size={60}></Box>
+<Box color="green" size={60}></Box>
+<Box color="blue" size={60}></Box>
 
-getTasks().forEach((task) => {
-    const {id, name, completed} = task
-    console.log(id, name, completed)
-})
+</View>
+);
+
+//estilo objeto StyleSheet
+
+const styles= StyleSheet.create({
+  container: {
+  flex: 1,
+  //flexColumn:{
+  //flexDirection:'coloumn'
+  //},
+  flexRow:{
+  flexDirection:'row'
+  },
+  
+  backgroundColor: 'aliceblue',
+  //flexDirection: 'coloumn',
+  //flexDirection: 'row',
+  //flexDirection: 'column-reverse',
+  //flexDirection: 'flex-start',
+  
+  
+  }
+});
+  
+export default App;

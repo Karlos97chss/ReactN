@@ -5,7 +5,7 @@ const Box = (props) => {
   // estilo inline
 const boxStyle = {
   height: props.size,
-  //width: props.size,
+  width: props.size,
  // flex: props.flex,
   backgroundColor: props.color,
 };
