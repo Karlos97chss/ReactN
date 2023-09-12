@@ -6,7 +6,7 @@ const Login = () => {
     <Text style={styles.title}> Login </Text>
     <TextInput style={styles.input} placeholder = "Email" keyboardType = "text" />
     <TextInput style={styles.input} placeholder = "Senha" secureTextEntry = {true}/>
-    <Button title = "Entrar" color = "Black"/>
+    <Button title = "Entrar" color = "black"/>
     </View>
   );
 }
