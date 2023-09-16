@@ -1,24 +1,40 @@
-import {useState} from 'react';
-import { View, Text } from 'react-native';
+import { useState } from 'react';
+import { View, Text} from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 
-const Login = () => {
-  const [email, setEmail] = useState(); 
-  const [senha, setSenha] = useState();
+import Titulo from '../components/Titulo';
 
-  return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold', paddingBottom: 16 }}>
-        Login
-      </Text>
-      <TextInput label={'E-mail'} valeu={''} onChangeText={(text) => setEmail(text)} />
+const Login = (props) => {
+  const [email, setEmail] = useState();
+  const [senha, setSenha] = useState();
+  const [erro, setErro] = useState();
+
+  const handleEntrar = () => {
+    if(email === 'test@email.com' && senha === '123456'){
+    setErro(null);
+    props.onLogin();
+  }
+    setErro('Usuario ou senha incorreta!');
+};
+
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Titulo>Login</Titulo>{erro && <Text style={{fontSize: 12, color:'red'}}>{erro}</Text>}
+      <TextInput
+        label={'E-mail'}
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+      />
       <TextInput
         label={'Senha'}
-        valeu={''}
+        value={senha}
         onChangeText={(text) => setSenha(text)}
         secureTextEntry={true}
+        placeholderTextColor='orange'
       />
-      <Button onPress={() => {}}>Entrar</Button>
-    </View>;
+      <Button onPress={handleEntrar} theme={{ colors: { primary: 'black' } }}>Entrar</Button>
+    </View>
+  );
 };
 
 export default Login;
